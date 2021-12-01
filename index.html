@@ -13,6 +13,7 @@
 </head>
 
 <body>
+
     <!--maps: maps
     audio recordings: audio
     photo, print, drawing: photos
@@ -21,20 +22,27 @@
     film, videos: film-and-videos
     printed music, such as sheet music: notated-music
     archived websites: websites-->
-    <input type="text" id="search-text" placeholder="search LOC...">
 
-    <select id="search-criteria">
-        <option value="">specify search criteria</option>
-        <option value="maps">maps</option>
-        <option value="audio">audio</option>
-        <option value="photos">photos</option>
-        <option value="manuscripts">manuscripts</option>
-        <option value="newspapers">newspapers</option>
-        <option value="film-and-videos">film and videos</option>
-        <option value="notated-music">notated music</option>
-        <option value="websites">websites</option>
-    </select>
+    <form id="search-form1">
+        <input type="text" id="search-text" placeholder="search LOC...">
+
+        <select id="search-criteria">
+            <option value="">specify search criteria</option>
+            <option value="maps">maps</option>
+            <option value="audio">audio</option>
+            <option value="photos">photos</option>
+            <option value="manuscripts">manuscripts</option>
+            <option value="newspapers">newspapers</option>
+            <option value="film-and-videos">film and videos</option>
+            <option value="notated-music">notated music</option>
+            <option value="websites">websites</option>
+        </select>
+    </form>
     <button id="search-button">search!</button>
+    <main id="results-container">
+        <h1></h1>
+        <p></p>
+    </main>
 </body>
 
 </html>
