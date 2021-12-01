@@ -1,4 +1,6 @@
-function getLoCRequest(option, term) {
+var formatOption = document.querySelector('#format')
+
+function getLoCRequest() {
   var apiUrl;
   if (option === "") {
     apiUrl = `https://www.loc.gov/search/?q=${term}&fo=json`;
@@ -40,3 +42,6 @@ function displayLoCResults(data) {
     issueContainerEl.appendChild(resultBlock);
   }
 };
+
+
+
