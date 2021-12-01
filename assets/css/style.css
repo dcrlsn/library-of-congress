@@ -1,7 +1,22 @@
 body {
+    display: flex;
+    width: 30%;
+    padding: 20px 20px;
+    margin: 50px 50px;
     display: inline-block;
-    box-sizing: border-box;
-    flex: 1 1 auto;
+    border: 3px solid #333;
+    border-radius: 15px;
+    box-shadow: 5px 5px 10px 5px;
+    flex: 0 0 auto;
     align-items: center;
     justify-content: center;
+}
+
+button {
+    padding: 10px 10px;
+    margin: 10px 0px;
+}
+
+p, h1 {
+    display: hidden;
 }
