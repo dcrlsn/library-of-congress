@@ -1,18 +1,16 @@
 var formatInput = document.querySelector('#search-criteria')
 var searchInput = document.querySelector('#search-text')
-var searchFormElement = document.querySelector('#search-form2')
-var resultsContainer = document.querySelector('#something')
+var searchFormElement = document.querySelector('#search-form1')
 
-function getLoCRequest() {
+function getLoCRequest(format, term) {
   var apiUrl;
   if (format === "") {
     apiUrl = `https://www.loc.gov/search/?q=${term}&fo=json`;
   }
   else apiUrl = `https://www.loc.gov/${format}/?q=${term}&fo=json`;
-
   fetch(apiUrl)
     .then(function (response) {
-      if (response.ok) response.json();
+      if (response.ok) return response.json();
       else alert('Error: ' + response.statusText);
     })
     .then(function (data) {
@@ -25,22 +23,21 @@ function getLoCRequest() {
 };
 
 function displayLoCResults(data) {
-  if (data.length === 0) return resultsContainer.textContent = 'Your search returned no results';
+  var resultsContainer = document.querySelector('#results-container')
+  if (!data) return resultsContainer.textContent = 'Your search returned no results';
 
   for (var item of data.results) {
-    var resultBlock = document.createElement('div');
-    resultBlock.classList = '';
+    var resultsDiv = document.createElement('div');
 
     var titleElement = document.createElement('h1');
+    console.log(item.title)
     titleElement.textContent = item.title;
-    resultBlock.appendChild(titleElement);
+    resultsDiv.appendChild(titleElement);
 
     var descriptionElement = document.createElement('p');
     descriptionElement.textContent = item.description
-    resultBlock.appendChild(titleElement);
-
-    resultBlock.appendChild(typeEl);
-    resultsContainer.appendChild(resultBlock);
+    resultsDiv.appendChild(descriptionElement);
+    resultsContainer.appendChild(resultsDiv)
   }
 };
 
@@ -48,7 +45,7 @@ searchFormElement.addEventListener('submit',
   function (event) {
     event.preventDefault();
 
-    var searchTerm = searchInput.value.replace(/s\s/g, "+");
+    var searchTerm = searchInput.value.replace(/\s/g, "+");
     var formatTerm = formatInput.value
     if (searchTerm) {
       getLoCRequest(formatTerm, searchTerm);
