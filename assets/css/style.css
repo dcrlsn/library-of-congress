@@ -1,4 +1,4 @@
-body {
+aside {
     display: flex;
     width: 30%;
     padding: 20px 20px;
@@ -6,7 +6,7 @@ body {
     display: inline-block;
     border: 3px solid #333;
     border-radius: 15px;
-    box-shadow: 5px 5px 10px 5px;
+    box-shadow: 5px 5px 10px 5px lightslategrey;
     flex: 0 0 auto;
     align-items: center;
     justify-content: center;
