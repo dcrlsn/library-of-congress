@@ -1,12 +1,12 @@
 aside {
     display: flex;
-    width: 30%;
+    width: 20%;
     padding: 30px 30px;
     margin: 50px 50px;
     display: inline-block;
     border: 2px solid #88819f;
     border-radius: 15px;
-    box-shadow: 5px 5px 10px 5px lightslategrey;
+    box-shadow: 5px 5px 10px lightslategrey;
     flex: 0 0 auto;
     align-items: center;
     justify-content: center;
@@ -16,7 +16,7 @@ button {
     display: flex;
     padding: 10px 10px;
     margin: 10px 0px;
-    width: 150px;
+    width: 100%;
     align-items: center;
     justify-content: center;
     background-color: #88819f;
@@ -29,4 +29,5 @@ button {
     height: 50px;
     border-radius: 15px;
     margin: 3px 3px;
+    width: 100%;
 }
