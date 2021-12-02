@@ -1,6 +1,17 @@
 var formatInput = document.querySelector('#search-criteria')
 var searchInput = document.querySelector('#search-text')
-var searchFormElement = document.querySelector('#search-form1')
+var searchFormElement = document.querySelector('form')
+var searchFormCheck = document.querySelector('#search-form1')
+
+const params = {}
+document.location.search.substr(1).split('&').forEach(pair => {
+  [key, value] = pair.split('=')
+  params[key] = value
+})
+
+if (!searchFormCheck) {
+  getLoCRequest(params.f, params.q)
+}
 
 function getLoCRequest(format, term) {
   var apiUrl;
@@ -30,7 +41,6 @@ function displayLoCResults(data) {
     var resultsDiv = document.createElement('div');
 
     var titleElement = document.createElement('h1');
-    console.log(item.title)
     titleElement.textContent = item.title;
     resultsDiv.appendChild(titleElement);
 
@@ -44,12 +54,11 @@ function displayLoCResults(data) {
 searchFormElement.addEventListener('submit',
   function (event) {
     event.preventDefault();
-
     var searchTerm = searchInput.value.replace(/\s/g, "+");
     var formatTerm = formatInput.value
+    location.replace(`search.html?q=${searchTerm}&f=${formatTerm}`);
     if (searchTerm) {
-      getLoCRequest(formatTerm, searchTerm);
-      searchInput.value = '';
-      formatInput.value = '';
+      formatInput = "";
+      searchInput = "";
     } else alert('Please enter a search term');
   })
